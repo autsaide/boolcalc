@@ -1,7 +1,7 @@
 CC=g++
-CFLAGS=-c -pedantic-errors
+CFLAGS=-c -pedantic-errors -g3 -ggdb
 LDFLAGS=
-SOURCES=boolcalc.cpp boolexpr.cpp
+SOURCES=boolcalc.cpp boolexpr.cpp node.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=boolcalc
 
