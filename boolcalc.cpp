@@ -134,6 +134,8 @@ int main(int argc, char *argv[]) {
 
               std::cout << "LINE " << line << std::endl;
               expressions.push_back(BooleanExpression(line.c_str()));
+
+              std::cout << "LINE PUSHED" << line << std::endl;
             }
 
             std::cout << "START" << std::endl;

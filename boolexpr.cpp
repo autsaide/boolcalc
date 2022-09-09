@@ -210,7 +210,10 @@ void BooleanExpression::GenerateZhegalkin() {
 //
 
 BooleanExpression::BooleanExpression(const char *string) {
+  std::cout << " START TO PARSE" << std::endl;
   expression_ = ParseString(string);
+  RecalculateString();
+  std::cout << " PARSED: " << expression_->str() << std::endl;
   string_ = string;
   auto ctx = calculator::FakeContext(expression_);
   size_ = ctx.vars.size();
