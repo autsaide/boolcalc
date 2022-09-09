@@ -16,9 +16,6 @@ int main(int argc, char *argv[]) {
   std::cout << '\n';
 
   bool help = false;
-
-  std::cout << "argc " << argc << '\n';
-  std::cout << "strlen(argv[1]) " << strlen(argv[1]) << '\n';
   switch (argc) {
     case 4:{
       switch (strlen(argv[1])) {
@@ -114,7 +111,9 @@ int main(int argc, char *argv[]) {
           break;
         }
         case 7:{
+          std::cout << "CHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEK";
           if (strcmp(argv[1], "-isfull")) {
+            std::cout << "YESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS";
             std::vector<BooleanExpression> expressions;
             std::fstream in(argv[2]);
             std::ofstream out(argv[3]);
