@@ -111,9 +111,7 @@ int main(int argc, char *argv[]) {
           break;
         }
         case 7:{
-          std::cout << "CHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEK";
-          if (strcmp(argv[1], "-isfull")) {
-            std::cout << "YESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS";
+          if (!strcmp(argv[1], "-isfull")) {
             std::vector<BooleanExpression> expressions;
             std::fstream in(argv[2]);
             std::ofstream out(argv[3]);
