@@ -111,7 +111,8 @@ int main(int argc, char *argv[]) {
           break;
         }
         case 7:{
-          if (!strcmp(argv[1], "-isfull")) {
+          if (strcmp(argv[1], "-isfull") == 0) {
+            std::cout << "ISFULL" << std::endl;
             std::vector<BooleanExpression> expressions;
             std::fstream in(argv[2]);
             std::ofstream out(argv[3]);
@@ -123,12 +124,17 @@ int main(int argc, char *argv[]) {
               std::cout << "Unable to open file " << argv[3];
               return 1;
             }
+            std::cout << "FILES VALID" << std::endl;
 
             while (!in.eof()) {
               std::string line;
               std::getline(in, line);
+
+              std::cout << "LINE " << line << std::endl;
               expressions.push_back(BooleanExpression(line.c_str()));
             }
+
+            std::cout << "START" << std::endl;
             out << (IsFull(expressions) ? "yes" : "no");
           } else {
             help = true;
