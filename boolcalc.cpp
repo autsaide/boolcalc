@@ -12,10 +12,17 @@ int main(int argc, char *argv[]) {
     case 4:{
       switch (strlen(argv[1])) {
         case 5:{
-          if (strcmp(argv[1], "-calc")) {
+          if (!strcmp(argv[1], "-calc")) {
             std::ifstream in(argv[2]);
             std::ofstream out(argv[3]);
-            std::string line;
+            if (!in.is_open()){
+              std::cout << "Unable to open file " << argv[2];
+              return 1;
+            }
+            if (!out.is_open()){
+              std::cout << "Unable to open file " << argv[3];
+              return 1;
+            }
             while (!in.eof()) {
               std::string line;
               std::getline(in, line);
@@ -24,7 +31,8 @@ int main(int argc, char *argv[]) {
               calculator::Context ctx{
                   vars, std::cin, std::cout
               };
-              out << bool_expression.calc(ctx);
+              std::cout << "\n---- " << line << " ----\n";
+              out << bool_expression.calc(ctx) << '\n';
             }
           } else {
             help = true;
@@ -32,25 +40,39 @@ int main(int argc, char *argv[]) {
           break;
         }
         case 4:{
-          if (strcmp(argv[1], "-cnf")) {
+          if (!strcmp(argv[1], "-cnf")) {
             std::ifstream in(argv[2]);
             std::ofstream out(argv[3]);
-            std::string line;
-            while (!in.eof()) {
-              std::string line;
-              std::getline(in, line);
-              auto bool_expression = BooleanExpression(line.c_str());
-              out << std::string(bool_expression.cnf());
+            if (!in.is_open()){
+              std::cout << "Unable to open file " << argv[2];
+              return 1;
             }
-          } else if (strcmp(argv[1], "-dnf")) {
-            std::ifstream in(argv[2]);
-            std::ofstream out(argv[3]);
-            std::string line;
+            if (!out.is_open()){
+              std::cout << "Unable to open file " << argv[3];
+              return 1;
+            }
             while (!in.eof()) {
               std::string line;
               std::getline(in, line);
               auto bool_expression = BooleanExpression(line.c_str());
-              out << std::string(bool_expression.dnf());
+              out << std::string(bool_expression.cnf())  << '\n';
+            }
+          } else if (!strcmp(argv[1], "-dnf")) {
+            std::ifstream in(argv[2]);
+            std::ofstream out(argv[3]);
+            if (!in.is_open()){
+              std::cout << "Unable to open file " << argv[2];
+              return 1;
+            }
+            if (!out.is_open()){
+              std::cout << "Unable to open file " << argv[3];
+              return 1;
+            }
+            while (!in.eof()) {
+              std::string line;
+              std::getline(in, line);
+              auto bool_expression = BooleanExpression(line.c_str());
+              out << std::string(bool_expression.dnf()) << '\n';
             }
           } else {
             help = true;
@@ -58,15 +80,22 @@ int main(int argc, char *argv[]) {
           break;
         }
         case 3:{
-          if (strcmp(argv[1], "-zh")) {
+          if (!strcmp(argv[1], "-zh")) {
             std::ifstream in(argv[2]);
             std::ofstream out(argv[3]);
-            std::string line;
+            if (!in.is_open()){
+              std::cout << "Unable to open file " << argv[2];
+              return 1;
+            }
+            if (!out.is_open()){
+              std::cout << "Unable to open file " << argv[3];
+              return 1;
+            }
             while (!in.eof()) {
               std::string line;
               std::getline(in, line);
               auto bool_expression = BooleanExpression(line.c_str());
-              out << std::string(bool_expression.zhegalkin());
+              out << std::string(bool_expression.zhegalkin()) << '\n';
             }
           } else {
             help = true;
@@ -78,6 +107,14 @@ int main(int argc, char *argv[]) {
             std::vector<BooleanExpression> expressions;
             std::fstream in(argv[2]);
             std::ofstream out(argv[3]);
+            if (!in.is_open()){
+              std::cout << "Unable to open file " << argv[2];
+              return 1;
+            }
+            if (!out.is_open()){
+              std::cout << "Unable to open file " << argv[3];
+              return 1;
+            }
 
             while (!in.eof()) {
               std::string line;
@@ -97,14 +134,18 @@ int main(int argc, char *argv[]) {
       } // switch strlen
       break;
     }
-    case 2:{
-      if (strcmp(argv[1], "-table")) {
+    case 3:{
+      if (!strcmp(argv[1], "-table")) {
         std::ifstream in(argv[2]);
-        std::string line;
+        if (!in.is_open()){
+          std::cout << "Unable to open file " << argv[2];
+          return 1;
+        }
         while (!in.eof()) {
           std::string line;
           std::getline(in, line);
           auto bool_expression = BooleanExpression(line.c_str());
+          std::cout << "\n ---- " << line << " ----\n";
           bool_expression.truthTable();
         }
       } else {

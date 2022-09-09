@@ -216,6 +216,12 @@ BooleanExpression::BooleanExpression(const char *string) {
   size_ = ctx.vars.size();
 }
 
+BooleanExpression::~BooleanExpression() {
+  delete expression_;
+  delete[] truth_table_;
+  delete[] zhegalkin_;
+}
+
 void BooleanExpression::RecalculateString() {
   string_ = expression_->str();
 }
@@ -270,6 +276,8 @@ BooleanExpression BooleanExpression::dnf() {
 
 BooleanExpression BooleanExpression::zhegalkin() {
   auto ctx = calculator::FakeContext(expression_);
+  if (zhegalkin_ == nullptr)
+    GenerateZhegalkin();
   std::string res = "";
   for (int i = 0; i < (1ULL << size_); ++i) {
     if (zhegalkin_[i]) {

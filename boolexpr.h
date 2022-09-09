@@ -32,6 +32,7 @@ class BooleanExpression {
   //
  public:
   BooleanExpression(const char *);
+  ~BooleanExpression();
   void RecalculateString();
   bool calc();
   bool calc(calculator::Context &ctx);
