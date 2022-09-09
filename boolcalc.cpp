@@ -17,6 +17,8 @@ int main(int argc, char *argv[]) {
 
   bool help = false;
 
+  std::cout << "argc " << argc << '\n';
+  std::cout << "strlen(argv[1]) " << strlen(argv[1]) << '\n';
   switch (argc) {
     case 4:{
       switch (strlen(argv[1])) {
