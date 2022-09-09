@@ -215,8 +215,12 @@ BooleanExpression::BooleanExpression(const char *string) {
   RecalculateString();
   std::cout << " PARSED: " << expression_->str() << std::endl;
   string_ = string;
+  std::cout << "  FAKE CTX" << std::endl;
   auto ctx = calculator::FakeContext(expression_);
+
+  std::cout << "  SIZE" << std::endl;
   size_ = ctx.vars.size();
+  std::cout << "END OF CONSTRUCTOR" << std::endl;
 }
 
 BooleanExpression::~BooleanExpression() {
