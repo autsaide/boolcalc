@@ -52,4 +52,4 @@ static bool IsFull(std::vector<BooleanExpression> &expressions){
     cl = cl & exp.Mask();
   }
   return cl == 0;
-};
+}
