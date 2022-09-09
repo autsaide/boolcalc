@@ -127,6 +127,7 @@ int main(int argc, char *argv[]) {
             std::cout << "FILES VALID" << std::endl;
 
             while (!in.eof()) {
+              std::cout << "NOT END OF FILE" << std::endl;
               std::string line;
               std::cout << "GET LINE" << std::endl;
               std::getline(in, line);
