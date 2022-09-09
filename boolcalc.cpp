@@ -128,6 +128,7 @@ int main(int argc, char *argv[]) {
 
             while (!in.eof()) {
               std::string line;
+              std::cout << "GET LINE" << std::endl;
               std::getline(in, line);
 
               std::cout << "LINE " << line << std::endl;
