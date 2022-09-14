@@ -133,7 +133,8 @@ int main(int argc, char *argv[]) {
               std::getline(in, line);
 
               std::cout << "LINE " << line << std::endl;
-              expressions.push_back(BooleanExpression(line.c_str()));
+              auto tmp_1 = BooleanExpression(line.c_str());
+              expressions.push_back(tmp_1);
 
               std::cout << "LINE PUSHED" << line << std::endl;
             }

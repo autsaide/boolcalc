@@ -6,8 +6,6 @@
 #include <iomanip>
 #include <vector>
 
-#define __cdecl
-
 class BooleanExpression {
   calculator::Node *expression_;
   std::string string_;
