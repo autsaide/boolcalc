@@ -1,47 +1,26 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=7966256&assignment_repo_type=AssignmentRepo)
-# Калькулятор булевских выражений
-Реализуйте класс для работы с булевскими выражениями.
+# Boolean calculator
 
-Переменные: xN, где N — натуральное число (то есть пеменные x1, x2, x3, ...). Могут принимать значения 0 и 1 (не ноль).
+Variables: `xN`, `N` is natural numbers
 
-Операции:
-* \& конъюнкция
-* v дизъюнкция
-* \~ отрицание
-* \> импликация (x → y)
-* \< обратная импликация (x ← y)
-* \+ сложение по модулю 2
-* \= эквиваленция
-* \| штрих Шеффера
-* ^ стрелка Пирса
+Operations:
+* `&` And
+* `v` Or
+* `~` Not
+* `>` Implication (x → y)
+* `<` Reverse implication (x ← y)
+* `+` XOR
+* `=` Equal
+* `|` штрих Шеффера
+* `^` Pierce arrow
 
-Входной файл содержит систему функций (в каждой отдельной строке записана функция). 
 
-* Название програмы: `boolcalc`
-* Вызов `boolcalc -calc input output` осуществляет вычисление выражений записанных в файле `input` (значения переменных запрашивает у пользователя) и записывает результаты в файл `output` (для каждой функции результат записывается в отдельной строке).
-* Вызов `boolcalc -cnf input output`  осуществляет построение конъюнктивной нормальной формы для выражений записанных в файле `input` и записывает результаты в файл `output` (для каждой функции результат записывается в отдельной строке).
-* Вызов `boolcalc -dnf input output`  осуществляет построение дизъюнктивной нормальной формы для выражений записанных в файле `input` и записывает результаты в файл `output` (для каждой функции результат записывается в отдельной строке).
-* Вызов `boolcalc -zh input output`  осуществляет построение полинома Жегалкина для выражений записанных в файле `input` и записывает результаты в файл `output` (для каждой функции результат записывается в отдельной строке).
-* Вызов `boolcalc -table input` выводит в консоль таблицу истинности для всех выражений записанных в файле `input`.
-* Вызов `boolcalc -isfull input output` проверяет систему функций на полноту. Если система функций в файле `input` полная, то в файл `output` выводится `yes`, иначе `no`.
-* Вызов `boolcalc -h` или `boolcalc ?` выводит на экран помощь по использованию программы.
+The input file contains a system of functions
 
-## Требования к реализации
-
-* Название класса: `BooleanExpression`
-* Заголовочный файл: `boolexpr.h`
-* Файл реализации: `boolexpr.cpp`
-
-Для класса BooleanExpression реализовать:
-* Конструктор от `const char *`, аргументом которого является строка с булевским выражением. При ошибке в выражении конструктор генерирует исключение.
-* Конструктор копирования.
-* Метод `bool calc()`, запрашивает значения переменных у пользователя и осуществляет вычисление выражения.
-* Метод `void truthTable()` выводит в консоль таблицу истинности. 
-* Метод `BooleanExpression cnf()` строит конъюнктивную нормальную форму.
-* Метод `BooleanExpression dnf()` строит дизъюнктивную нормальную форму.
-* Метод `BooleanExpression zhegalkin()` строит полином Жегалкина.
-* Оператор `operator std::string() const` формирует строку с булевским выражением.
-
-Функция `bool isFullSystem(std::vector<BooleanExpression>)` проверяет на полноту систему функций.
-
-Для разработанного класса и функции должны быть созданы модульные тесты.
+* `boolcalc -calc input output` calculate functions inside of `input`, put results into `output`
+* `boolcalc -cnf input output` build conjunctive normal forms for functions inside of `input` put results into `output` 
+* `boolcalc -dnf input output` build disjunctive normal forms for functions inside of `input` put results into `output`
+* `boolcalc -zh input output`  build Zhegalkin polynomials for functions inside of `input` put results into `output`
+* `boolcalc -table input` print truth tables for functions inside of `input`
+* `boolcalc -isfull input output` check the system of function inside `input` for completeness 
+* `boolcalc -h` or `boolcalc ?` help
