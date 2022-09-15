@@ -6,15 +6,6 @@
 #include <cstring>
 
 int main(int argc, char *argv[]) {
-
-  for (int i = 0; i < argc; ++i) {
-    std::cout << argv[i];
-    std::cout << '\n';
-  }
-
-  std::cout << '\n';
-  std::cout << '\n';
-
   bool help = false;
   switch (argc) {
     case 4:{
@@ -112,7 +103,6 @@ int main(int argc, char *argv[]) {
         }
         case 7:{
           if (strcmp(argv[1], "-isfull") == 0) {
-            std::cout << "ISFULL" << std::endl;
             std::vector<BooleanExpression> expressions;
             std::fstream in(argv[2]);
             std::ofstream out(argv[3]);
@@ -124,22 +114,13 @@ int main(int argc, char *argv[]) {
               std::cout << "Unable to open file " << argv[3];
               return 1;
             }
-            std::cout << "FILES VALID" << std::endl;
 
             while (!in.eof()) {
-              std::cout << "NOT END OF FILE" << std::endl;
               std::string line;
-              std::cout << "GET LINE" << std::endl;
               std::getline(in, line);
-
-              std::cout << "LINE " << line << std::endl;
-              auto tmp_1 = BooleanExpression(line.c_str());
-              expressions.push_back(tmp_1);
-
-              std::cout << "LINE PUSHED" << line << std::endl;
+              expressions.push_back(BooleanExpression(line.c_str()));
             }
 
-            std::cout << "START" << std::endl;
             out << (IsFull(expressions) ? "yes" : "no");
           } else {
             help = true;
