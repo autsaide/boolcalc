@@ -10,7 +10,7 @@ Operations:
 * `<` Reverse implication (x ← y)
 * `+` XOR
 * `=` Equal
-* `|` штрих Шеффера
+* `|` Sheffer stroke
 * `^` Pierce arrow
 
 
